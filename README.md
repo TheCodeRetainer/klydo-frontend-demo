@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Klydo Frontend
 
-## Getting Started
+The frontend application for the Klydo Transaction Indexer, built with Next.js and TypeScript. This application displays Ethereum & Base (Mainnet) transactions for addresses collected from multiple sources.
 
-First, run the development server:
+## Technology Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js with TypeScript
+- React 18
+- Tailwind CSS for styling
+
+## Project Structure
+
+```
+frontend/
+├── src/
+│   ├── app/           # Next.js app directory
+│   ├── components/    # React components
+│   └── lib/           # Utility functions and API client
+├── public/            # Static assets
+├── package.json
+└── next.config.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Displays combined transaction list for all watched addresses
+- Responsive UI built with Tailwind CSS
+- Automatic address collection when transactions are requested
+- Real-time transaction data from the backend API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup Instructions
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18 or later
+- Backend API running (see backend README)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Install dependencies:
+   ```
+   npm install
+   ```
 
-## Deploy on Vercel
+2. Create a `.env.local` file in the frontend directory with the following variables:
+   ```
+   NEXT_PUBLIC_API_URL=http://localhost:3001
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Run the development server:
+   ```
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## Components
+
+- **TransactionTabs**: Main component for displaying transaction data with filtering options
+- **TransactionList**: Displays the list of transactions
+- **TransactionItem**: Individual transaction display
+- **AddressList**: Displays the list of watched addresses
+
+## API Integration
+
+The frontend communicates with the backend API to fetch transaction data. The API client is located in `src/lib/api.ts`.
+
+## Deployment
+
+### Deployment to Vercel
+
+1. Push your code to a Git repository.
+
+2. Connect your repository to Vercel.
+
+3. Configure the environment variables in the Vercel dashboard:
+   - `NEXT_PUBLIC_API_URL`: URL of your deployed backend API
+
+4. Deploy the project.
+
+## Scripts
+
+- `npm run dev` - Run the development server
+- `npm run build` - Build the project
+- `npm run start` - Start the production server
+- `npm run lint` - Run linting
+
+## License
+
+This project is licensed under the MIT License.
